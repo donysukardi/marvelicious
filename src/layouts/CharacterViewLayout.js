@@ -26,7 +26,7 @@ const CloseIcon = styled.span`
 `;
 
 const CharacterViewLayout = ({ onModalClose, children }) => (
-  <DrawerModal onClose={onModalClose}>
+  <DrawerModal contentLabel="Character View" onClose={onModalClose}>
     <Wrapper>
       <CloseButtonWrapper>
         <CloseButton title="Close" onClick={onModalClose}>
