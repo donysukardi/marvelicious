@@ -8,13 +8,15 @@ import { login } from '../libs/firebaseUtils';
 class LoginPage extends Component {
   onSubmit = async (values, actions) => {
     const { history } = this.props;
+    actions.setSubmitting(true);
+
     try {
       await login(values);
       actions.setSubmitting(false);
       history.replace('/');
     } catch (error) {
-      console.log(error);
-      alert(JSON.stringify(error));
+      actions.setSubmitting(false);
+      alert(error.message);
     }
   };
 

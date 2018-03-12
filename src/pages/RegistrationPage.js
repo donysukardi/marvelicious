@@ -8,13 +8,15 @@ import { register } from '../libs/firebaseUtils';
 class RegistrationPage extends Component {
   onSubmit = async (values, actions) => {
     const { history } = this.props;
+    actions.setSubmitting(true);
+
     try {
       await register(values);
       actions.setSubmitting(false);
       history.replace('/');
     } catch (error) {
-      console.log(error);
-      alert(JSON.stringify(error));
+      actions.setSubmitting(false);
+      alert(error.message);
     }
   };
 
