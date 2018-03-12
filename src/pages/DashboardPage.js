@@ -8,6 +8,7 @@ import {
   CharacterCard,
   EmptyBox,
   Link,
+  Loader,
   ResultsNav,
   TextWrapper,
   WidthWrapper,
@@ -72,6 +73,7 @@ class DashboardPage extends Component {
     const hasSearch = search && !!search.length;
     const isEmptyState = !hasSearch;
     const searchDone = search && status === statuses.DONE;
+    const isSearching = search && status === statuses.SEARCHING;
     const hasNoResults = searchDone && !currentList.length;
     const hasResults = searchDone && !!currentList.length;
 
@@ -95,10 +97,22 @@ class DashboardPage extends Component {
                   'Search'.
                 </p>
                 <p>
-                  Or try <Link to={'?search=Iron+Man'}>Iron Man</Link> or{' '}
-                  <Link to={'?search=Captain+America'}>Captain America</Link>.
+                  Or try{' '}
+                  <Link silent to={'?search=Iron+Man'}>
+                    Iron Man
+                  </Link>{' '}
+                  or{' '}
+                  <Link silent to={'?search=Captain+America'}>
+                    Captain America
+                  </Link>.
                 </p>
               </TextWrapper>
+            </EmptyBox>
+          )}
+
+          {isSearching && (
+            <EmptyBox>
+              <Loader />
             </EmptyBox>
           )}
 
@@ -107,8 +121,14 @@ class DashboardPage extends Component {
               <TextWrapper center>
                 <p>No results found for {search}</p>
                 <p>
-                  Try <Link to={'?search=Black+Panther'}>Black Panther</Link> or{' '}
-                  <Link to={'?search=Captain+Marvel'}>Captain Marvel</Link>.
+                  Try{' '}
+                  <Link silent to={'?search=Black+Panther'}>
+                    Black Panther
+                  </Link>{' '}
+                  or{' '}
+                  <Link silent to={'?search=Captain+Marvel'}>
+                    Captain Marvel
+                  </Link>.
                 </p>
               </TextWrapper>
             </EmptyBox>
@@ -138,15 +158,17 @@ class DashboardPage extends Component {
             </SearchResultsGrid>
           )}
 
-          <ResultsNav
-            prev={
-              page > 1 && toUrl(pathname, { ...queryParams, page: page - 1 })
-            }
-            next={
-              page < totalPages &&
-              toUrl(pathname, { ...queryParams, page: page + 1 })
-            }
-          />
+          {searchDone && (
+            <ResultsNav
+              prev={
+                page > 1 && toUrl(pathname, { ...queryParams, page: page - 1 })
+              }
+              next={
+                page < totalPages &&
+                toUrl(pathname, { ...queryParams, page: page + 1 })
+              }
+            />
+          )}
         </WidthWrapper>
 
         {view && <CharacterPage id={view} />}

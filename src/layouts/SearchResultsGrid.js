@@ -3,9 +3,13 @@ import styled from 'styled-components';
 const SearchResultsGrid = styled.section`
   display: grid;
   padding: 1.5rem 0;
-  @media (min-width: 520px) {
-    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
-    grid-gap: 1.5rem;
+  grid-gap: 1.5rem;
+  grid-template-columns: 1fr;
+  @media (min-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 720px) {
+    grid-template-columns: repeat(3, 1fr);
   }
 `;
 

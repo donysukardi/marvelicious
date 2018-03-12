@@ -7,6 +7,7 @@ import FirebaseAuthObserver from './FirebaseAuthObserver';
 import Header from './Header';
 import InputFeedback from './InputFeedback';
 import Link from './Link';
+import Loader from './Loader';
 import LoginRegisterForm from './LoginRegisterForm';
 import ResultsNav from './ResultsNav';
 import SearchBar from './SearchBar';
@@ -24,6 +25,7 @@ export {
   Header,
   InputFeedback,
   Link,
+  Loader,
   LoginRegisterForm,
   ResultsNav,
   SearchBar,

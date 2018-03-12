@@ -4,6 +4,7 @@ import { withProps } from 'recompose';
 import styled, { css } from 'styled-components';
 import BaseLink from './Link';
 import { headingFont } from '../styles/variables';
+import { fluidType } from '../styles/utils';
 
 const NO_IMAGE = 'image_not_available.jpg';
 
@@ -38,10 +39,11 @@ const Avatar = styled.img`
     `};
 `;
 
+// prettier-ignore
 const CharacterName = styled.h3`
   color: white;
   font-family: ${headingFont};
-  font-size: 2.4rem;
+  ${fluidType('480px', '1440px', '2rem', '2.4rem')}
   text-decoration: none;
   margin: 0;
   background-color: #222;

@@ -10,9 +10,10 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #888;
+  background-color: #222;
   border-radius: 4px;
   min-height: 280px;
+  color: white;
 `;
 
 const EmptyBox = ({ children }) => (
